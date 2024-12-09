@@ -12,8 +12,8 @@ import java.util.logging.*;
 public class ImmobileRepository {
     private static final Logger logger=Logger.getLogger(ImmobileRepository.class.getName());
 
-    public void createImmobile(Immobile immobile, Proprietario proprietario) {
-        String sql="insert into immobile values(?,?,?,?,?,?,?)";
+    public void createImmobile(Immobile immobile) {
+        String sql="insert into immobili  values(?,?,?,?,?,?,?)";
         try{
             Connection c= DbConnection.openConnection();
             PreparedStatement ps=c.prepareStatement(sql);
@@ -23,7 +23,7 @@ public class ImmobileRepository {
             ps.setInt(4,immobile.getCosto());
             ps.setInt(5,immobile.getSuperficie());
             ps.setInt(6,immobile.getAnno());
-            ps.setString(7,proprietario.getId());
+            ps.setString(7,immobile.getProprietario().getId());
             int result=ps.executeUpdate();
             if(result>0){
                 System.out.println("Immobile adicionado com sucesso");
@@ -38,7 +38,7 @@ public class ImmobileRepository {
 
     public ArrayList<Immobile> readImmobile() {
         ArrayList<Immobile> immobili=new ArrayList<>();
-        String sql="select i.id,p.id as pa* from immobili i full join proprietario p on p.id = i.idp;";
+        String sql="select i.id,p.id as pa,* from immobili i full join proprietari p on p.id = i.idp;";
         try{
             Connection c= DbConnection.openConnection();
             PreparedStatement ps=c.prepareStatement(sql);
@@ -81,7 +81,7 @@ public class ImmobileRepository {
         }
     }
 
-    public void updateImmobile(Immobile immobile,Proprietario proprietario) {
+    public void updateImmobile(Immobile immobile) {
         String sql="update immobili set tipo=?,vani=?,costo=?,superficie=?,anno=? where id=?";
         try{
             Connection c=DbConnection.openConnection();
@@ -91,7 +91,7 @@ public class ImmobileRepository {
             ps.setInt(3,immobile.getCosto());
             ps.setInt(4,immobile.getSuperficie());
             ps.setInt(5,immobile.getAnno());
-            ps.setString(6,proprietario.getId());
+            ps.setString(6,immobile.getProprietario().getId());
             int result=ps.executeUpdate();
             if(result>0){
                 System.out.println("Immobile atualizado com sucesso");
@@ -101,4 +101,5 @@ public class ImmobileRepository {
         }
 
     }
+
 }

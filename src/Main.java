@@ -1,3 +1,4 @@
+import Controller.ImmobileController;
 import Controller.ProprietarioController;
 import Entity.Proprietario;
 
@@ -16,7 +17,7 @@ public class Main {
             System.out.println("Inserisci la tua scelta");
             choice1 = scanner.nextInt();
             scanner.nextLine();
-            if (choice1 == 1) {/*
+            if (choice1 == 1) {
                 System.out.println("Classe Immobile");
                 System.out.println("****MENU****");
                 System.out.println("1. Crea un nuovo Immobile");
@@ -27,19 +28,19 @@ public class Main {
                 System.out.print("inserisci la tua scelta: ");
                 choice2 = scanner.nextInt();
                 scanner.nextLine();
-                ImpiegatoController impiegatoController = new ImpiegatoController();
+                ImmobileController immobileController = new ImmobileController();
                 switch (choice2) {
                     case 1:
-                        impiegatoController.createImpiegato();
+                        immobileController.createImmobile();
                         break;
                     case 2:
-                        impiegatoController.updateImpiegato();
+                        immobileController.updateImmobile();
                         break;
                     case 3:
-                        impiegatoController.readImpiegato();
+                        immobileController.readImmobile();
                         break;
                     case 4:
-                        impiegatoController.deleteImpiegato();
+                        immobileController.deleteImmobile();
                         break;
                     case 5:
                         break;
@@ -54,7 +55,7 @@ public class Main {
                     default:
                         System.out.println("Insersci un numero valido");
                 }
-            */}
+            }
             else if (choice1 == 2) {
                 System.out.println("Classe Proprietario");
                 System.out.println("****MENU****");
