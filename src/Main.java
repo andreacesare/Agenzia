@@ -1,3 +1,4 @@
+import Controller.AnnessoController;
 import Controller.ImmobileController;
 import Controller.ProprietarioController;
 import Entity.Proprietario;
@@ -13,7 +14,7 @@ public class Main {
         int choice2;
         Scanner scanner = new Scanner(System.in);
         do {
-            System.out.println("1)Immobile \n 2)Proprietario \n 3) Exit");
+            System.out.println("1)Immobile \n 2)Proprietario \n 3)Annesso \n 4) Exit");
             System.out.println("Inserisci la tua scelta");
             choice1 = scanner.nextInt();
             scanner.nextLine();
@@ -103,7 +104,54 @@ public class Main {
                         System.out.println("Insersci un numero valido");
                 }
             }
-        } while (choice1 != 3);
+            else if (choice1 == 3) {
+                System.out.println("Classe Annesso");
+                System.out.println("****MENU****");
+                System.out.println("1. Crea un nuovo annesso");
+                System.out.println("2. Aggiorna un annesso");
+                System.out.println("3. Visualizza la lista degli annessi");
+                System.out.println("4. Elimina un annesso");
+                System.out.println("9. Exit");
+                System.out.print("inserisci la tua scelta: ");
+                choice2 = scanner.nextInt();
+                scanner.nextLine();
+                AnnessoController annessoController = new AnnessoController();
+                switch (choice2) {
+                    case 1:
+                        annessoController.createAnnesso();
+                        break;
+                    case 2:
+                        annessoController.updateAnnesso();
+                        break;
+                    case 3:
+                        annessoController.readAnnesso();
+                        break;
+                    case 4:
+                        annessoController.deleteAnnesso();
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 10:
+                        break;
+                    case 11:
+                        break;
+                    case 12:
+                        break;
+                    case 13:
+                    case 9:
+                        System.out.println("Exiting");
+                        break;
+                    default:
+                        System.out.println("Insersci un numero valido");
+                }
+            }
+        } while (choice1 != 4);
 
     }
     }
